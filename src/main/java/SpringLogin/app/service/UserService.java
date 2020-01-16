@@ -19,6 +19,7 @@ public class UserService {
 
     public List<User> selectMany() {
         return dao.selectMany();
+
     }
 
 }
