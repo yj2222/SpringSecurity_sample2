@@ -2,7 +2,7 @@ package SpringLogin.app.model;
 
 import lombok.Data;
 
-@Data
+@Data //lombokを使用しているのでアノテーション一つでGetter,Setterを作成できる。
 public class User {
 
     private int userId;

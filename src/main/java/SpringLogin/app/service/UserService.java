@@ -8,15 +8,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import SpringLogin.app.repository.UserDao;
+import SpringLogin.app.model.User;
 
-@Transactional
-@Service
+@Transactional //メソッド内で例外が発生した際にロールバックつまりエラーが起きる直前に戻るアノテーション。
+@Service //Serviceクラスのアノテーション。ServiceクラスはDAOから受け取ったデータを変換しControllerに渡す役目がある。
 public class UserService {
 
     @Autowired
-    @Qualifier("UserDaoJdbcImpl")
+    @Qualifier("UserDaoJdbcImpl") //DAOはインターフェースをimplimentsするのが定石らしく、implimentsするファイルを明示的にする。
     UserDao dao;
 
+    //Daoのメソッドを実行。戻り値をList型でControllerに引き渡す。
     public List<User> selectMany() {
         return dao.selectMany();
 

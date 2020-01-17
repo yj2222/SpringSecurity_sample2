@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 
+import SpringLogin.app.model.User;
+
 public interface UserDao {
 
     // Userテーブルの全データを取得.
