@@ -48,19 +48,15 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		//権限を利用する場合は、DB上で権限テーブル、ユーザ権限テーブルを作成し管理が必要
 		
 		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
-		System.out.println(grantList);
 		GrantedAuthority authority = new SimpleGrantedAuthority("USER");
-		System.out.println(authority);
 
 		grantList.add(authority);
 		
 		//rawDataのパスワードは渡すことができないので、暗号化
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		System.out.println(encoder);
 
         //UserDetailsはインタフェースなのでUserクラスのコンストラクタで生成したユーザオブジェクトをキャスト
 		UserDetails userDetails = (UserDetails)new User(user.getUserName(), encoder.encode(user.getPassword()),grantList);
-		System.out.println(userDetails);
 		
 		return userDetails;
 	}
